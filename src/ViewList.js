@@ -1,5 +1,6 @@
-import { Card, Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
+import Canvas from "./Canvas";
 
 const ViewList = ({ list }) => {
   if (list.length === 0) {
@@ -11,15 +12,21 @@ const ViewList = ({ list }) => {
     );
   } else {
     return (
-      <Card>
-        <Grid container display="flex" direction={"row"}>
-          {list.map((item, index) => (
-            <Grid item key={index} sx={{ p: 1 }}>
-              {item}
-            </Grid>
-          ))}
-        </Grid>
-      </Card>
+      // <Card>
+      //   <Grid container display="flex" direction={"row"}>
+      //     {list.map((item, index) => (
+      //       <Grid item key={index} sx={{ p: 1 }}>
+      //         {item}
+      //       </Grid>
+      //     ))}
+      //   </Grid>
+      // </Card>
+      <Canvas
+        width="700"
+        height="400"
+        style={{ backgroundColor: "white" }}
+        list={list}
+      />
     );
   }
 };
