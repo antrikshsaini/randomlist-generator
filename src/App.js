@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import Generator from "./Generator";
+import { CardContent, Typography, Card, Grid } from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container justifyContent={"center"}>
+      <Grid container justifyContent={"center"} sx={{ bgcolor: "#ffe5b4" }}>
+        <Typography>{<h2>Random List Generator</h2>}</Typography>
+      </Grid>
+      <Grid item container direction="column" spacing={2} maxWidth={"lg"}>
+        <Grid item>
+          <Card>
+            <CardContent>
+              <Typography>
+                This application generate a list of 10,000 unique numbers in
+                Random order. Each number in the list is unique and between 1
+                and 10,000 (inclusive)
+              </Typography>
+              <Typography>
+                There is an option provided to set the level of Randomness in
+                the list.
+              </Typography>
+              <Typography>
+                {
+                  <ul>
+                    <li>Level 0 : shuffle only one time </li>
+                    <li>Level 1 : shuffle 50% of elements n/4 </li>
+                    <li>Level 2 : shuffle 100% of elements n/2 </li>
+                  </ul>
+                }
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item>
+          <Generator />
+        </Grid>
+      </Grid>
+    </Grid>
   );
 }
 
