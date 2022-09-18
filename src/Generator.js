@@ -32,7 +32,7 @@ export default function Generator() {
     // i loop how many times
     // shuffle with any random element max
     const shuffle = (i) => {
-      let a = i;
+      let a = i === max ? -1 : i;
       while (i >= 0) {
         random = getRandomNumber(a + 1, max - 1);
         [arr[i], arr[random]] = [arr[random], arr[i]];
@@ -62,6 +62,10 @@ export default function Generator() {
         shuffle(Math.floor(max / 2) - 1);
         break;
       }
+      case 3: {
+        shuffle(max);
+        break;
+      }
       default:
         break;
     }
@@ -89,12 +93,14 @@ export default function Generator() {
                 <MenuItem value={0}>Zero</MenuItem>
                 <MenuItem value={1}>One</MenuItem>
                 <MenuItem value={2}>Two</MenuItem>
+                <MenuItem value={3}>Three</MenuItem>
               </Select>
             </Grid>
             <Grid item>
               <TextField
                 label="Max Value"
                 variant="outlined"
+                type={"number"}
                 onChange={handleMaxChange}
               />
             </Grid>
