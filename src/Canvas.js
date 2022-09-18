@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 
 const Canvas = (props) => {
-  // const canvasRef = useRef(null);
   const list = props.list;
+  // To Make Circles in Canvas according to the Radom list
+  // Main Focus for where to draw circle depends on "i" and Random number value "list[i]"
   const draw = (ctx) => {
     for (let i = 0; i < list.length; i++) {
       var random = list[i];
@@ -22,12 +23,14 @@ const Canvas = (props) => {
   useEffect(() => {
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext("2d");
-    //Draw
+    // Clear Canvas everytime the list is generated again
     context.clearRect(0, 0, canvas.width, canvas.height);
+    //Draw Circles in Canvas
     draw(context);
-    document.getElementById("list-id").style.background =
+    // Capture Canvas image according to Max Value which decide full frame of Canvas
+    document.getElementById("canvas-id").style.background =
       "url(" + canvas.toDataURL() + ")";
-    document.getElementById("list-id").style.backgroundSize = "contain";
+    document.getElementById("canvas-id").style.backgroundSize = "contain";
   }, [list]);
 
   return <canvas id={"canvas"} {...props} />;
