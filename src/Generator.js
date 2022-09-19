@@ -25,17 +25,17 @@ export default function Generator() {
     return Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
   };
 
-  /** Function to Generate Random Number List according to Levels  of Variations  */
+  /** Function to Generate Random Number List according to Levels of Variations  */
   const handleGenerate = (isCanvas) => {
     setIsCanvas(isCanvas);
     let arr = [];
     let random;
-    // To initial List with Sorted numbers from 1 to Max Value
+    // To initialize List with Sorted numbers from 1 to Max Value
     for (let i = 1; i <= max; i++) {
       arr.push(i);
     }
 
-    /** Function to shuffle i+1 to Max Random Numbers with 0 to i elements. Where "i" is the breakpoint Index in Array according to level */
+    /** Function to swap Numbers at 0 to i position with Numbers at Random position between i+1 to Max Value*/
     const shuffle = (i) => {
       let a = i === max ? -1 : i;
       while (i >= 0) {
@@ -46,9 +46,11 @@ export default function Generator() {
       setList(arr);
     };
 
-    // The level depends on number of elements swapped in a Sorted List
+    /** The Level Determines the number of elements swapped in a Sorted List */
     switch (level) {
       case 0: {
+        // Swap Numbers present at any Two Random Positions
+        // This case is also generating a Unique Random List with a single operation
         let firstRandom = getRandomNumber(0, Math.floor(max / 2) - 1);
         let secondRandom = getRandomNumber(Math.floor(max / 2), max - 1);
         [arr[firstRandom], arr[secondRandom]] = [
@@ -59,17 +61,17 @@ export default function Generator() {
         break;
       }
       case 1: {
-        // shuffling indexes of Array, first quarter with rest Random Indexes
+        // Shuffling Values present in Array, first n/4 elements with rest Random Indexes
         shuffle(Math.floor(max / 4) - 1);
         break;
       }
       case 2: {
-        // shuffling indexes of Array, first half with second half Random Indexes
+        // Shuffling Values present in Array, first n/2 elements with rest Random Indexes
         shuffle(Math.floor(max / 2) - 1);
         break;
       }
       case 3: {
-        // shuffling indexes of Array with maximum Ramdoness
+        // Shuffling all the Values in Array for Maximum Randomness
         shuffle(max);
         break;
       }
@@ -125,6 +127,7 @@ export default function Generator() {
         </FormControl>
       </Grid>
       <Grid item sx={{ maxWidth: "80%", py: 2 }}>
+        {/* Generate View of Random List */}
         <ViewList list={list} max={max} isCanvas={isCanvas} />
       </Grid>
     </Grid>

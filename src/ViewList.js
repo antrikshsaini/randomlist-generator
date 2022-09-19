@@ -26,6 +26,9 @@ const ViewList = ({ list, max, isCanvas }) => {
       );
     } else {
       /** Show Canvas */
+      /** Canvas component generate pattern in Dynamic sizes which cannot fit in normal size screen, therefore an Image is captured
+       *  in the component to show in a specified div
+       */
       return (
         <>
           <Grid id="canvas-id" width={1000} height={1000}>
@@ -34,7 +37,7 @@ const ViewList = ({ list, max, isCanvas }) => {
           <Canvas
             width={max}
             height={max}
-            style={{ display: "none" }} // This canvas size can be huge if max is 10,000, not good for User Experience
+            style={{ display: "none" }}
             list={list}
           />
         </>

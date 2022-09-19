@@ -12,9 +12,10 @@ function App() {
           <Card>
             <CardContent>
               <Typography>
-                This application generate a list of 10,000 unique numbers in
-                Random order. Each number in the list is unique and between 1
-                and 10,000 (inclusive)
+                This application generate a list of unique numbers in Random
+                order according to Greatest Number, (Max Value input by the
+                user). Each number in the list is unique and between 1 and Max
+                Value (inclusive). For instance List between 1 and 10,000.
               </Typography>
               <Typography>
                 There is an option provided to set the level of Randomness in
@@ -39,7 +40,7 @@ function App() {
           </Card>
         </Grid>
         <Grid item>
-          <Generator />
+          <Generator /> {/* Component to Generate and show Random List */}
         </Grid>
       </Grid>
     </Grid>
