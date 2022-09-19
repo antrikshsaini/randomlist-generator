@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/randomlist-generator/static/css/main.e2b4836e.css",
+    "main.js": "/randomlist-generator/static/js/main.e4a2885f.js",
+    "static/js/787.6f7aef8e.chunk.js": "/randomlist-generator/static/js/787.6f7aef8e.chunk.js",
+    "index.html": "/randomlist-generator/index.html",
+    "main.e2b4836e.css.map": "/randomlist-generator/static/css/main.e2b4836e.css.map",
+    "main.e4a2885f.js.map": "/randomlist-generator/static/js/main.e4a2885f.js.map",
+    "787.6f7aef8e.chunk.js.map": "/randomlist-generator/static/js/787.6f7aef8e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e2b4836e.css",
+    "static/js/main.e4a2885f.js"
+  ]
+}
