@@ -11,13 +11,16 @@ export default function Generator() {
   const [max, setMax] = React.useState(0);
   const [list, setList] = React.useState([]);
   const [isCanvas, setIsCanvas] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   const handleChange = (event) => {
     setLevel(event.target.value);
   };
 
   const handleMaxChange = (event) => {
-    setMax(event.target.value);
+    let value = event.target.value;
+    setMax(value);
+    value > 10000 || value < 1 ? setError(true) : setError(false);
   };
 
   /** To Generate Random Number with Min and Max Value both Inclusive */
@@ -111,15 +114,27 @@ export default function Generator() {
                 variant="outlined"
                 type={"number"}
                 onChange={handleMaxChange}
+                helperText={
+                  error ? "Please enter number between 1 and 10000" : null
+                }
+                error={error}
               />
             </Grid>
             <Grid item>
-              <Button variant="contained" onClick={() => handleGenerate(false)}>
+              <Button
+                variant="contained"
+                onClick={() => handleGenerate(false)}
+                disabled={error}
+              >
                 Generate List
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="contained" onClick={() => handleGenerate(true)}>
+              <Button
+                variant="contained"
+                onClick={() => handleGenerate(true)}
+                disabled={error}
+              >
                 Generate Canvas
               </Button>
             </Grid>
