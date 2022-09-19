@@ -89,6 +89,7 @@ export default function Generator() {
       justifyContent={"center"}
       direction="column"
       alignItems={"center"}
+      sx={{ px: 2 }}
     >
       <Grid item>
         <FormControl>
