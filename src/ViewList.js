@@ -1,8 +1,9 @@
 import { Typography, Card, Grid } from "@mui/material";
-import React from "react";
+import React, { useRef } from "react";
 import Canvas from "./Canvas";
 
 const ViewList = ({ list, max, isCanvas }) => {
+  const canvasContainer = useRef(null);
   if (list.length === 0) {
     return (
       <Typography>
@@ -31,12 +32,13 @@ const ViewList = ({ list, max, isCanvas }) => {
        */
       return (
         <>
-          <Grid id="canvas-id" width={1000} height={1000}>
+          <Grid id="canvas-id" ref={canvasContainer} width={1000} height={1000}>
             {/* Canvas container to show huge canvas like 10,000 by 10,000 */}
           </Grid>
           <Canvas
             width={max}
             height={max}
+            canvas_container={canvasContainer}
             style={{ display: "none" }}
             list={list}
           />

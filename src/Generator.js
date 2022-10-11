@@ -37,12 +37,12 @@ export default function Generator() {
     for (let i = 1; i <= max; i++) {
       arr.push(i);
     }
-
     /** Function to swap Numbers at 0 to i position with Numbers at Random position between i+1 to Max Value*/
     const shuffle = (i) => {
-      let a = i === max ? -1 : i;
+      const isMax = i === max - 1 ? true : false; // required in level 3 for maximum shuffling
+      const minValue = isMax ? -1 : i;
       while (i >= 0) {
-        random = getRandomNumber(a + 1, max - 1);
+        random = getRandomNumber(minValue + 1, isMax ? i - 1 : max - 1);
         [arr[i], arr[random]] = [arr[random], arr[i]];
         i--;
       }
@@ -75,7 +75,7 @@ export default function Generator() {
       }
       case 3: {
         // Shuffling all the Values in Array for Maximum Randomness
-        shuffle(max);
+        shuffle(max - 1);
         break;
       }
       default:

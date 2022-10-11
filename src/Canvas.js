@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 const Canvas = (props) => {
+  const canvasRef = useRef(null);
   const list = props.list;
   /** To Make Circles in Canvas according to the Radom list */
   const draw = (ctx) => {
@@ -21,19 +22,19 @@ const Canvas = (props) => {
   };
 
   useEffect(() => {
-    const canvas = document.getElementById("canvas");
+    const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     // Clear Canvas everytime the list is generated again
     context.clearRect(0, 0, canvas.width, canvas.height);
     //Draw Circles in Canvas
     draw(context);
     // Capture full frame of Canvas
-    document.getElementById("canvas-id").style.background =
+    props.canvas_container.current.style.background =
       "url(" + canvas.toDataURL() + ")";
-    document.getElementById("canvas-id").style.backgroundSize = "contain";
+    props.canvas_container.current.style.backgroundSize = "contain";
   }, [list]);
 
-  return <canvas id={"canvas"} {...props} />;
+  return <canvas ref={canvasRef} id={"canvas"} {...props} />;
 };
 
 export default Canvas;
